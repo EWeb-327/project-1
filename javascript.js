@@ -37,7 +37,6 @@ $(".recipe-btn").on("click", function () {
       var img = $("<div>").html("<img data-label='" + label + "' class='recipeImg' src='" + results[hit].recipe.image + " '/>");
       var info = $("<div>").text("Time: " + results[hit].recipe.totalTime + " min.  ||  " + "Servings: " + results[hit].recipe.yield)
       var url = results[hit].recipe.url
-      var shop = $("<div>").attr('id', 'HFVP-IRYY-VJKG-PDFV').html("<script>whisk.queue.push(function () {whisk.display('HFVP-IRYY-VJKG-PDFV')});</script>")
       saved.push(results[hit].recipe.url)
       labels.push(label)
       console.log(saved)
@@ -57,7 +56,7 @@ $(".recipe-btn").on("click", function () {
         list.push(item)
         results.splice(hit, 1);
       }
-      newDiv.addClass("h-recipe").prepend(title, link, save, img, info, button, ingredients, shop);
+      newDiv.addClass("h-recipe").prepend(title, link, save, img, info, button, ingredients);
       $(".list-of-recipes").append(newDiv);
     }
     $("#input").val("")
