@@ -32,20 +32,16 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
-    <script>
-    var whisk = whisk || {};
-    whisk.queue = whisk.queue || [];
-
-    whisk.queue.push(function () {
-      whisk.shoppingList.defineWidget("HFVP-IRYY-VJKG-PDFV", {
-        styles: {
-          button: {
-            color: "#0FF2C5"
-          }
-        }
-      });
-    });
-  </script>
+  <script
+  async="true"
+  src="https://cdn.whisk.com/sdk/shopping-list.js"
+  type="text/javascript"
+>
+</script>
+<script>
+  var whisk = whisk || {};
+  whisk.queue = whisk.queue || [];
+</script>
 </head>
 
 <body>
@@ -97,6 +93,7 @@
     </div>
     </div>
   </div>
+  <button id="whisk-single-recipe">Add recipe to shopping list</button>
   <div class="row">
     <div class="twelve columns">
         <button type="button" class="collapsible">View Saved</button>   
@@ -107,6 +104,13 @@
     </div>
   </div>
 </div>
+<script>
+  whisk.queue.push(function() {
+    whisk.listeners.addClickListener('whisk-single-recipe', 'shoppingList.addRecipeToList', {
+      recipeUrl: 'https://whisk.com/demo/calzone-roasted-peppers',
+    });
+  });
+</script>
 <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 <script src="javascript.js"></script>
